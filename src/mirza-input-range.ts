@@ -5,8 +5,8 @@ import * as noUiSlider from 'nouislider';
 
 @customElement('mirza-input-range')
 export class MirzaInputRangeElement extends LitElement {
-  static override styles = [
-    css`
+    static override styles = [
+        css`
     .noUi-target,
     .noUi-target * {
         -webkit-touch-callout: none;
@@ -328,7 +328,7 @@ export class MirzaInputRangeElement extends LitElement {
         right: 28px
     }
     `,
-    css`
+        css`
     :host {
       display: block;
       width: 100%;
@@ -341,55 +341,80 @@ export class MirzaInputRangeElement extends LitElement {
     }
   `];
 
-  @property({ type: Number })
-  min = 0;
+    @property({ type: Number })
+    min = 0;
 
-  @property({ type: Number })
-  max = 100000;
+    @property({ type: Number })
+    max = 100000;
 
-  @property({ type: Array })
-  values = [0, 100000];
+    @property({ type: Array })
+    values = [0, 100000];
 
-  @property({ type: Number })
-  step = 10000;
+    @property({ type: Number })
+    step = 10000;
 
+    private slider!: noUiSlider.API;
 
-  override render() {
-    return html`
+    override render() {
+        return html`
       <div> </div>
     `;
-  }
-
-  override firstUpdated() {
-    const element = this.shadowRoot!.querySelector('div');
-
-    if (element) {
-      const slider = noUiSlider.create(element, {
-        start: this.values,
-        connect: true,
-        range: {
-          'min': [this.min],
-          'max': [this.max]
-        },
-        step: this.step,
-        direction: 'rtl',
-      });
-
-      slider.on('update', (values) => {
-        this.values = [parseInt(values[0].toString()), parseInt(values[1].toString())];
-        
-        this.dispatchEvent(new CustomEvent('change', {
-          detail: {
-            values: this.values,
-          }
-        }));
-      });
     }
-  }
+
+    override firstUpdated() {
+        const element = this.shadowRoot!.querySelector('div');
+
+        if (element) {
+            this.slider = noUiSlider.create(element, {
+                start: this.values,
+                connect: true,
+                range: {
+                    'min': [this.min],
+                    'max': [this.max]
+                },
+                step: this.step,
+                direction: 'rtl',
+            });
+
+            this.slider.on('update', (values) => {
+                this.values = [parseInt(values[0].toString()), parseInt(values[1].toString())];
+
+                this.dispatchEvent(new CustomEvent('change', {
+                    detail: {
+                        values: this.values,
+                    }
+                }));
+            });
+        }
+    }
+
+    override updated(changedProperties: Map<string, unknown>) {
+        if (changedProperties.has('values')) {
+            this.slider.set(this.values);
+        }
+
+        if (changedProperties.has('min')) {
+            this.slider.updateOptions({
+                range: {
+                    'min': [this.min],
+                    'max': [this.max]
+                }
+            }, false);
+        }
+
+        if (changedProperties.has('max')) {
+            this.slider.updateOptions({
+                range: {
+                    'min': [this.min],
+                    'max': [this.max]
+                }
+            }, false);
+        }
+    }
 }
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'mirza-input-range': MirzaInputRangeElement;
-  }
+    interface HTMLElementTagNameMap {
+        'mirza-input-range': MirzaInputRangeElement;
+    }
 }
