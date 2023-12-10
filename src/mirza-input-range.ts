@@ -380,7 +380,7 @@ export class MirzaInputRangeElement extends LitElement {
         
         this.dispatchEvent(new CustomEvent('change', {
           detail: {
-            values
+            values: this.values,
           }
         }));
       });
