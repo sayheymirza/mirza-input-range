@@ -1,15 +1,15 @@
 ---
 layout: example.11ty.cjs
-title: <my-element> ⌲ Examples ⌲ Name Property
+title: <mirza-input-range> ⌲ Examples ⌲ Name Property
 tags: example
 name: Name Property
 description: Setting the name property
 ---
 
-<my-element name="Earth"></my-element>
+<mirza-input-range name="Earth"></mirza-input-range>
 
 <h3>HTML</h3>
 
 ```html
-<my-element name="Earth"></my-element>
+<mirza-input-range name="Earth"></mirza-input-range>
 ```

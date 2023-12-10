@@ -5,14 +5,15 @@
  */
 
 import summary from 'rollup-plugin-summary';
-import {terser} from 'rollup-plugin-terser';
+import { terser } from 'rollup-plugin-terser';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
+import litcss from 'rollup-plugin-lit-css';
 
 export default {
-  input: 'my-element.js',
+  input: 'mirza-input-range.js',
   output: {
-    file: 'my-element.bundled.js',
+    file: 'mirza-input-range.bundled.js',
     format: 'esm',
   },
   onwarn(warning) {
@@ -21,7 +22,7 @@ export default {
     }
   },
   plugins: [
-    replace({'Reflect.decorate': 'undefined'}),
+    replace({ 'Reflect.decorate': 'undefined' }),
     resolve(),
     /**
      * This minification setup serves the static site generation.
@@ -38,5 +39,13 @@ export default {
       },
     }),
     summary(),
+
+    litcss(
+      {
+        include: '**/*.css',
+      },
+      {
+      }
+    ),
   ],
 };

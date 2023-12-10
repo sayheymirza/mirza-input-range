@@ -1,27 +1,27 @@
 ---
 layout: page.11ty.cjs
-title: <my-element> ⌲ Home
+title: <mirza-input-range> ⌲ Home
 ---
 
-# &lt;my-element>
+# &lt;mirza-input-range>
 
-`<my-element>` is an awesome element. It's a great introduction to building web components with LitElement, with nice documentation site as well.
+`<mirza-input-range>` is an awesome element. It's a great introduction to building web components with LitElement, with nice documentation site as well.
 
 ## As easy as HTML
 
 <section class="columns">
   <div>
 
-`<my-element>` is just an HTML element. You can it anywhere you can use HTML!
+`<mirza-input-range>` is just an HTML element. You can it anywhere you can use HTML!
 
 ```html
-<my-element></my-element>
+<mirza-input-range></mirza-input-range>
 ```
 
   </div>
   <div>
 
-<my-element></my-element>
+<mirza-input-range></mirza-input-range>
 
   </div>
 </section>
@@ -31,16 +31,16 @@ title: <my-element> ⌲ Home
 <section class="columns">
   <div>
 
-`<my-element>` can be configured with attributed in plain HTML.
+`<mirza-input-range>` can be configured with attributed in plain HTML.
 
 ```html
-<my-element name="HTML"></my-element>
+<mirza-input-range name="HTML"></mirza-input-range>
 ```
 
   </div>
   <div>
 
-<my-element name="HTML"></my-element>
+<mirza-input-range name="HTML"></mirza-input-range>
 
   </div>
 </section>
@@ -50,7 +50,7 @@ title: <my-element> ⌲ Home
 <section class="columns">
   <div>
 
-`<my-element>` can be used with declarative rendering libraries like Angular, React, Vue, and lit-html
+`<mirza-input-range>` can be used with declarative rendering libraries like Angular, React, Vue, and lit-html
 
 ```js
 import {html, render} from 'lit-html';
@@ -59,8 +59,8 @@ const name = 'lit-html';
 
 render(
   html`
-    <h2>This is a &lt;my-element&gt;</h2>
-    <my-element .name=${name}></my-element>
+    <h2>This is a &lt;mirza-input-range&gt;</h2>
+    <mirza-input-range .name=${name}></mirza-input-range>
   `,
   document.body
 );
@@ -69,8 +69,8 @@ render(
   </div>
   <div>
 
-<h2>This is a &lt;my-element&gt;</h2>
-<my-element name="lit-html"></my-element>
+<h2>This is a &lt;mirza-input-range&gt;</h2>
+<mirza-input-range name="lit-html"></mirza-input-range>
 
   </div>
 </section>
